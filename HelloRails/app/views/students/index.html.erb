@@ -1,0 +1,28 @@
+<h1>Listing students</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Graduated</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.name %></td>
+    <td><%= student.age %></td>
+    <td><%= student.graduated %></td>
+    <td><%= link_to 'Show', [student.school, student] %></td>
+    <td><%= link_to 'Edit', edit_school_student_path(student.school, student) %></td>
+    <td><%= link_to 'Destroy', [student.school, student], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student', new_school_student_path(params[:school_id]) %>
+<%= link_to 'Back', schools_path %>
